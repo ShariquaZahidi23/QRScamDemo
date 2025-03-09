@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: url('bgImage.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,7 +16,7 @@
             margin: 0;
         }
         .login-container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -43,19 +44,27 @@
         .login-container button:hover {
             background-color: #0056b3;
         }
+        .warning-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
     <script>
-        function showAlert() {
-            alert('You just fell for a QR scam! Never enter credentials on unknown websites.');
+        function showWarning() {
+            document.getElementById('warning').style.display = 'block';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
         }
     </script>
 </head>
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
-        <button onclick="showAlert()">Login</button>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="showWarning()">Login</button>
+        <p id="warning" class="warning-message">You just fell for a QR scam! Never enter credentials on unknown websites.</p>
     </div>
 </body>
 </html>
